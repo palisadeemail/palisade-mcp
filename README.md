@@ -44,7 +44,14 @@ PALISADE_API_KEY=secret_... npx -y @palisadeemail/mcp
 }
 ```
 
-When `headers.Authorization` is set, the client authenticates with that API key and does not fall back to OAuth. The server replies `401` with a `WWW-Authenticate` challenge whenever credentials are missing or rejected, so a bad key surfaces as a connection error rather than silently starting an OAuth flow.
+When `headers.Authorization` is set, the client authenticates with that API key and does not fall back to OAuth. The server replies `401` with a `WWW-Authenticate` challenge whenever credentials are missing or rejected, so a bad key surfaces as a connection error rather than silently starting an OAuth flow. The one exception is [API-key-only discovery](#api-key-only-discovery) below, where a client opts out of that challenge on purpose.
+
+### API-key-only discovery
+
+Some MCP directories probe an endpoint before they forward a configured API key. For those
+clients, use `https://api.palisade.email/mcp?auth=api-key`. It keeps API-key authentication
+enabled but omits the OAuth discovery challenge from an unauthenticated probe. Send the same
+`Authorization: Bearer secret_...` header after connecting.
 
 ### If the server connects but the Palisade tools are missing
 
