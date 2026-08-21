@@ -1,6 +1,6 @@
 # @palisadeemail/mcp
 
-Connect an MCP client to the [Palisade](https://palisade.email) MCP server, which monitors and manages email authentication (SPF, DKIM, DMARC, MTA-STS, BIMI) for your domains.
+Connect an MCP client to the [Palisade Email Authentication MCP](https://www.palisade.email/mcp), which monitors and manages SPF, DKIM, DMARC, MTA-STS, and BIMI for your domains.
 
 Palisade's MCP server is remote (Streamable HTTP at `https://api.palisade.email/mcp`). This package is a thin local bridge for stdio-based clients, using [`mcp-remote`](https://www.npmjs.com/package/mcp-remote) under the hood. Clients that support remote HTTP MCP servers with a bearer token can point at the URL directly and skip this package.
 
