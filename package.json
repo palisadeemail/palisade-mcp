@@ -4,7 +4,7 @@
   "mcpName": "email.palisade/palisade",
   "description": "Local stdio bridge to the Palisade MCP server (email authentication: SPF, DKIM, DMARC, MTA-STS, BIMI).",
   "keywords": ["mcp", "modelcontextprotocol", "palisade", "dmarc", "spf", "dkim", "email-security", "dns"],
-  "homepage": "https://developer.palisade.email/docs/guide",
+  "homepage": "https://www.palisade.email/mcp",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/palisadeemail/palisade-mcp.git"
