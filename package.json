@@ -14,7 +14,7 @@
   "bin": {
     "palisade-mcp": "bin/cli.js"
   },
-  "files": ["bin/cli.js", "README.md"],
+  "files": ["bin/cli.js", "README.md", "server.json"],
   "engines": {
     "node": ">=18"
   }
