@@ -13,7 +13,7 @@ if (!apiKey) {
   process.stderr.write(
     'palisade-mcp: PALISADE_API_KEY is not set.\n' +
       'Create a key at https://app.palisade.email (Settings -> API keys), then set PALISADE_API_KEY.\n' +
-      'Docs: https://developer.palisade.email/docs/guide\n',
+      'Docs: https://www.palisade.email/mcp\n',
   );
   process.exit(1);
 }

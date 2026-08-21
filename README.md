@@ -6,7 +6,7 @@ Palisade's MCP server is remote (Streamable HTTP at `https://api.palisade.email/
 
 ## Get an API key
 
-Create one at [app.palisade.email](https://app.palisade.email) → Settings → API keys, or programmatically via headless signup. See the [developer guide](https://developer.palisade.email/docs/guide).
+Create one at [app.palisade.email](https://app.palisade.email) → Settings → API keys, or programmatically via headless signup. See the [Palisade MCP guide](https://www.palisade.email/mcp).
 
 ## Use it
 
@@ -67,9 +67,9 @@ The reported scope is the one in effect. If it is not the entry holding your API
 
 ## Tools
 
-Accounts (`get_account`), domains (`list_domains`, `get_domain`, `add_domain`, `remove_domain`, `verify_domain`), DNS setup (`get_dns_records` — the exact records to publish at your own DNS provider), MTA-STS (`get_mta_sts`, `enable_mta_sts`), remediation tasks (`list_tasks`, `get_task`), groups (`list_groups`), and billing (`get_subscription`, `start_checkout`, `get_billing_portal_url`).
+Accounts (`get_account`), domains (`list_domains`, `get_domain`, `create_domain`, `update_domain`, `delete_domain`, `verify_domain`), DNS setup (`get_dns_records`, which returns the exact records to publish at your own DNS provider), SPF diagnostics (`get_spf`, which reads the live record, its DNS lookup count against the 10-lookup limit, and the problems found), hosted DMARC (`enable_hosted_dmarc`), MTA-STS (`get_mta_sts`, `enable_mta_sts`, `disable_mta_sts`), remediation tasks (`list_tasks`, `get_task`, `complete_task`, `dismiss_task`), DMARC reporting (`get_dmarc_summary`, `list_dmarc_senders`, which report aggregate figures and per-source breakdowns rather than raw report XML), groups (`list_groups`, `create_group`, `update_group`, `delete_group`), billing (`get_subscription`, `start_checkout`, `start_billing_portal`), and webhooks (`list_webhook_events`, `list_webhook_endpoints`, `create_webhook_endpoint`, `delete_webhook_endpoint`).
 
-Palisade tells you which DNS records to publish; you apply them at whatever DNS provider hosts the domain. Payment happens on Stripe-hosted pages.
+Palisade tells you which DNS records to publish; you apply them at whatever DNS provider hosts the domain. Payment happens on Stripe-hosted pages. Webhooks are the alternative to polling for long-running state changes: `create_webhook_endpoint` returns the signing secret once and never again, so store it when it is issued.
 
 ## Environment
 

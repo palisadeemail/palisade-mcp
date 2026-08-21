@@ -1,6 +1,6 @@
 {
   "name": "@palisadeemail/mcp",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "mcpName": "email.palisade/palisade",
   "description": "Local stdio bridge to the Palisade MCP server (email authentication: SPF, DKIM, DMARC, MTA-STS, BIMI).",
   "keywords": ["mcp", "modelcontextprotocol", "palisade", "dmarc", "spf", "dkim", "email-security", "dns"],
