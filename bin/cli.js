@@ -1,28 +1,28 @@
 #!/usr/bin/env node
 'use strict';
 
-// Thin stdio<->Streamable-HTTP bridge for the Palisade MCP server.
-// Local MCP clients (Claude Code, Cursor, etc.) speak stdio; the Palisade
-// server is remote HTTP. We delegate the transport bridging to `mcp-remote`
-// and inject the API key as a Bearer header so users only set one env var.
+// Thin stdio<->Streamable-HTTP bridge for the Palisade MCP server, for clients that only
+// speak stdio. Transport bridging is delegated to `mcp-remote`; sign-in goes through
+// Palisade's public OAuth client, which asks for the organization on the sign-in page.
+// The callback port is fixed because the authorization server registers exact redirect
+// URIs, so the same port is pinned here and on the client.
 
 const { spawn } = require('node:child_process');
 
-const apiKey = process.env.PALISADE_API_KEY;
-if (!apiKey) {
-  process.stderr.write(
-    'palisade-mcp: PALISADE_API_KEY is not set.\n' +
-      'Create a key at https://app.palisade.email (Settings -> API keys), then set PALISADE_API_KEY.\n' +
-      'Docs: https://www.palisade.email/mcp\n',
-  );
-  process.exit(1);
-}
-
 const url = process.env.PALISADE_MCP_URL || 'https://api.palisade.email/mcp';
+const clientId = process.env.PALISADE_MCP_CLIENT_ID || 'ryKtuiPypMeYMoL1Cmhxtz6BYrEYQbLV';
+const callbackPort = process.env.PALISADE_MCP_CALLBACK_PORT || '8765';
 
-// `Authorization: Bearer <key>` passed as a single argv element (no shell, so
-// the space is preserved literally).
-const args = ['-y', 'mcp-remote', url, '--header', `Authorization: Bearer ${apiKey}`];
+const args = [
+  '-y',
+  'mcp-remote',
+  url,
+  callbackPort,
+  '--static-oauth-client-info',
+  JSON.stringify({ client_id: clientId }),
+  '--static-oauth-client-metadata',
+  JSON.stringify({ token_endpoint_auth_method: 'none' }),
+];
 
 const child = spawn('npx', args, {
   stdio: 'inherit',
