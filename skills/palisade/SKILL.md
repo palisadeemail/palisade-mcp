@@ -1,6 +1,6 @@
 ---
 name: palisade
-description: Inspect and fix email authentication (SPF, DKIM, DMARC, MTA-STS, BIMI) with Palisade. When to use: a domain's mail is being rejected or spoofed, a DMARC record needs writing or moving to p=reject, DMARC reports need reading, or an IT team or MSP wants ongoing monitoring across many domains. Not for sending or receiving email, and not the Palisade Identity wallet product.
+description: "Inspect and fix email authentication (SPF, DKIM, DMARC, MTA-STS, BIMI) with Palisade. When to use: a domain's mail is being rejected or spoofed, a DMARC record needs writing or moving to p=reject, DMARC reports need reading, or an IT team or MSP wants ongoing monitoring across many domains. Not for sending or receiving email, and not the Palisade Identity wallet product."
 ---
 
 # Palisade - email authentication for AI agents
