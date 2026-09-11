@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "palisade": {
+      "command": "npx",
+      "args": ["-y", "@palisadeemail/mcp"]
+    }
+  }
+}
