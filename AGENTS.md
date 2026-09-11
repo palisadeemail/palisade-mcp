@@ -1,6 +1,6 @@
 # Working in this repository, and using Palisade from an agent
 
-This repository is `@palisadeemail/mcp`, a thin stdio bridge to the remote Palisade MCP server at `https://api.palisade.email/mcp`. It wraps `mcp-remote`, signs in through Palisade's public OAuth client, and holds no product logic of its own. The bridge is synced from the `dns-auditor` monorepo; do not edit `bin/cli.js` here, edit it upstream.
+This repository is `@palisadeemail/mcp`, a thin stdio bridge to the remote Palisade MCP server at `https://api.palisade.email/mcp`. It wraps `mcp-remote`, signs in through Palisade's public OAuth client, and holds no product logic of its own. Every file here is synced from the `dns-auditor` monorepo and overwritten on each sync, so change it upstream rather than here.
 
 ## What Palisade is for
 

@@ -1,7 +1,7 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "palisade",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "Inspect and fix email authentication (SPF, DKIM, DMARC, MTA-STS, BIMI) with Palisade: the MCP server as a stdio bridge, and a skill saying when and how to use it.",
   "author": {
     "name": "Palisade",

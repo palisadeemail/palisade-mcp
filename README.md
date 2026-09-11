@@ -39,11 +39,35 @@ claude mcp add --transport http --client-id ryKtuiPypMeYMoL1Cmhxtz6BYrEYQbLV --c
 
 ### claude.ai
 
-Add a custom connector with the URL, Authentication **Always required**, and OAuth client **Use your own OAuth client** with the client ID above and the secret left blank. See the [Palisade MCP guide](https://www.palisade.email/mcp).
+Add a custom connector with the URL, Authentication **Always required**, and OAuth client **Use your own OAuth client** with the client ID above and the secret left blank. See the [MCP section of the developer guide](https://developer.palisade.email/docs/guide#mcp).
 
 ## What is refused
 
 API keys are not accepted on the MCP endpoint; they remain the credential for the REST API. A client that registers its own OAuth client, through dynamic registration or a client ID metadata document, is refused too: the authorization server cannot attach an organization to such a client, so the endpoint answers `403` and names the client to use instead.
+
+## Without an account
+
+`https://api.palisade.email/mcp/public` needs no sign-in and no Palisade account. It carries only the two tools that read public DNS for any domain, `audit_domain` and `validate_spf_include`; everything that reads or changes an organization's records lives on the signed-in endpoint above. Calls are throttled per client address.
+
+Clients that speak Streamable HTTP connect to it directly:
+
+```bash
+claude mcp add --transport http palisade-audit https://api.palisade.email/mcp/public
+```
+
+For stdio-only clients, point the bridge at it. The endpoint never asks for a token, so no browser opens:
+
+```json
+{
+  "mcpServers": {
+    "palisade-audit": {
+      "command": "npx",
+      "args": ["-y", "@palisadeemail/mcp"],
+      "env": { "PALISADE_MCP_URL": "https://api.palisade.email/mcp/public" }
+    }
+  }
+}
+```
 
 ## Sign-in
 
