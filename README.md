@@ -69,6 +69,10 @@ Every tool that reads or changes Palisade's own records is scoped to the organiz
 
 Palisade tells you which DNS records to publish; you apply them at whatever DNS provider hosts the domain. Payment happens on Stripe-hosted pages. Webhooks are the alternative to polling for long-running state changes: `create_webhook_endpoint` returns the signing secret once and never again, so store it when it is issued.
 
+## For coding agents
+
+`AGENTS.md` says what Palisade is for, how to connect, the order of work and the rules for write tools. `skills/palisade/SKILL.md` is the same guidance as an installable skill, `plugin.json` is the agent-plugins.org manifest, and `mcp.json` is the stdio client config. The canonical copies are served by the product site: https://www.palisade.email/agents.md and https://www.palisade.email/.well-known/agent-skills/index.json.
+
 ## Environment
 
 All optional.
