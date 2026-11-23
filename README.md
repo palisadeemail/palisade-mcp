@@ -29,6 +29,31 @@ npx -y @palisadeemail/mcp
 codex mcp add palisade -- npx -y @palisadeemail/mcp
 ```
 
+### Hermes Agent
+
+Install this repository as a Hermes plugin. It adds the Palisade skill and connects through `mcp-remote`, pinned to one release, with the same client and callback port as the bridge. Hermes asks before any tool that changes something:
+
+```bash
+hermes plugins install palisadeemail/palisade-mcp
+hermes plugins enable palisade
+```
+
+Or let Hermes's own MCP client connect to the remote server, with no local process, in `~/.hermes/config.yaml`. It uses the same client and callback port:
+
+```yaml
+mcp_servers:
+  palisade:
+    url: https://api.palisade.email/mcp
+    auth: oauth
+    trust: untrusted
+    oauth:
+      client_id: ryKtuiPypMeYMoL1Cmhxtz6BYrEYQbLV
+      redirect_host: localhost
+      redirect_port: 8765
+```
+
+Then sign in with `hermes mcp login palisade`.
+
 ### Claude Code
 
 Claude Code speaks Streamable HTTP itself, so it does not need the bridge. It signs in with the same client, on a fixed callback port:

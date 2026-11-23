@@ -1,7 +1,7 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "palisade",
-  "version": "0.2.2",
+  "version": "0.3.0",
   "description": "Inspect and fix email authentication (SPF, DKIM, DMARC, MTA-STS, BIMI) with Palisade: the MCP server as a stdio bridge, and a skill saying when and how to use it.",
   "author": {
     "name": "Palisade",
@@ -11,5 +11,34 @@
   "homepage": "https://www.palisade.email/mcp",
   "repository": "https://github.com/palisadeemail/palisade-mcp",
   "license": "MIT",
-  "keywords": ["mcp", "dmarc", "spf", "dkim", "email-authentication", "dns", "email-security"]
+  "keywords": ["mcp", "dmarc", "spf", "dkim", "email-authentication", "dns", "email-security"],
+  "extensions": {
+    "com.openai": {
+      "interface": {
+        "displayName": "Palisade",
+        "shortDescription": "Inspect and fix SPF, DKIM, DMARC, MTA-STS and BIMI for your domains.",
+        "longDescription": "Palisade is an agentic DMARC platform for IT teams and MSPs. Audit any domain's email authentication, read DMARC reports, diagnose SPF and DKIM issues, and move a domain to p=reject with a person approving each write. Sign in with OAuth; auditing a domain you don't own needs no account.",
+        "developerName": "Palisade",
+        "category": "Productivity",
+        "capabilities": ["Read", "Write"],
+        "websiteURL": "https://www.palisade.email",
+        "privacyPolicyURL": "https://www.palisade.email/privacy-policy",
+        "termsOfServiceURL": "https://www.palisade.email/terms-conditions",
+        "defaultPrompt": [
+          "Audit example.com's SPF, DKIM and DMARC and explain what's failing.",
+          "Get the DNS records I need to publish to fix DMARC for our domain.",
+          "Summarize last week's DMARC reports and which sources are failing alignment."
+        ],
+        "brandColor": "#04264b",
+        "composerIcon": "./assets/icon.png",
+        "logo": "./assets/logo.png",
+        "screenshots": []
+      }
+    },
+    "com.nousresearch.hermes": {
+      "servers": {
+        "palisade": { "trust": "untrusted" }
+      }
+    }
+  }
 }

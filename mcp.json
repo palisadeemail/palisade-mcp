@@ -1,8 +1,19 @@
 {
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/mcp.schema.json",
   "mcpServers": {
     "palisade": {
+      "type": "stdio",
       "command": "npx",
-      "args": ["-y", "@palisadeemail/mcp"]
+      "args": [
+        "-y",
+        "mcp-remote@0.1.49",
+        "https://api.palisade.email/mcp",
+        "8765",
+        "--static-oauth-client-info",
+        "{\"client_id\":\"ryKtuiPypMeYMoL1Cmhxtz6BYrEYQbLV\"}",
+        "--static-oauth-client-metadata",
+        "{\"token_endpoint_auth_method\":\"none\"}"
+      ]
     }
   }
 }
