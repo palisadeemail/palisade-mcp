@@ -1,0 +1,16 @@
+{
+  "name": "palisade",
+  "version": "0.3.0",
+  "description": "Inspect and fix email authentication (SPF, DKIM, DMARC, MTA-STS, BIMI) with Palisade. Audit any domain with no account, or sign in to manage your own.",
+  "contextFileName": "AGENTS.md",
+  "mcpServers": {
+    "palisade": {
+      "command": "npx",
+      "args": ["-y", "@palisadeemail/mcp"]
+    },
+    "palisade-audit": {
+      "type": "http",
+      "url": "https://api.palisade.email/mcp/public"
+    }
+  }
+}
